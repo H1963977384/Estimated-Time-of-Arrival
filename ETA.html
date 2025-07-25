@@ -39,7 +39,7 @@
 
     .footer {
       margin-top: 25px;
-      font-size: 0.9em;
+      font-size: 0.8em;
       color: #888;
     }
   </style>
@@ -47,26 +47,27 @@
 <body>
   <div class="card">
     <h2>下一班车预计抵达时间</h2>
-    <div id="eta">正在加载...</div>
-    <div class="footer">来自 香港政府开放数据 API</div>
+    <div id="eta"><span id="eta-time">正在加载...</span><img id="bus-icon" src="logo.png" alt="bus icon" style="height: 0.6em; vertical-align: top; margin-right: 8px; display: none;"></div>
+    <div class="footer">实际抵站时间会受交通情况影响，建议提前13分钟出门前往巴士站候车。</div>
   </div>
 
   <script>
-    fetch("https://rt.data.gov.hk/v2/transport/citybus/eta/ctb/003191/A23")
-      .then(response => response.json())
-      .then(data => {
-        if (data.data && data.data.length > 0 && data.data[0].eta) {
-          const etaString = data.data[0].eta;
-          const eta = etaString.slice(11, 16); // HH:MM
-          document.getElementById("eta").innerText = eta;
-        } else {
-          document.getElementById("eta").innerText = "暂无到站信息";
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById("eta").innerText = "加载失败";
-      });
+	fetch("https://rt.data.gov.hk/v2/transport/citybus/eta/ctb/003191/A23")
+	  .then(response => response.json())
+	  .then(data => {
+	    if (data.data && data.data.length > 0 && data.data[0].eta) {
+	      const etaString = data.data[0].eta;
+	      const eta = etaString.slice(11, 16);
+	      document.getElementById("eta-time").innerText = eta;
+	      document.getElementById("bus-icon").style.display = "inline";
+	    } else {
+	      document.getElementById("eta-time").innerText = "暂无到站信息";
+	    }
+	  })
+	  .catch(err => {
+	    console.error(err);
+	    document.getElementById("eta-time").innerText = "加载失败";
+	  });
   </script>
 </body>
 </html>
