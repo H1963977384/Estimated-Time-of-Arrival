@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A23线抵站时间查询</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f2f6fc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    #eta {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>下一班车预计抵达时间</h2>
+    <div id="eta">正在加载...</div>
+    <div class="footer">来自 香港政府开放数据 API</div>
+  </div>
+
+  <script>
+    fetch("https://rt.data.gov.hk/v2/transport/citybus/eta/ctb/003191/A23")
+      .then(response => response.json())
+      .then(data => {
+        if (data.data && data.data.length > 0 && data.data[0].eta) {
+          const etaString = data.data[0].eta;
+          const eta = etaString.slice(11, 16); // HH:MM
+          document.getElementById("eta").innerText = eta;
+        } else {
+          document.getElementById("eta").innerText = "暂无到站信息";
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("eta").innerText = "加载失败";
+      });
+  </script>
+</body>
+</html>
