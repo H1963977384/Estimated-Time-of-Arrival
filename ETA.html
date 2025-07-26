@@ -27,12 +27,14 @@
 
     h2 {
       color: #333;
+	  font-family: "DengXian", sans-serif;
       font-size: 1.5em;
       margin-bottom: 35px;
     }
 
 	#a23 {
 	  background-color: #CD0D40;
+	  font-family: "Microsoft YaHei", sans-serif;
 	  color: white;
       font-size: 2em;
       font-weight: bold;
@@ -40,35 +42,42 @@
 	
     #eta {
       font-size: 3em;
+	  font-family: "DengXian", sans-serif;
       font-weight: bold;
       color: #007bff;
+	  height: 58px;
 	  text-align: right;
     }
 	
 	#wait1 {
+	  font-family: "DengXian", sans-serif;
 	  font-size: 1.5em;
-	  color: #000;
+	  color: #888;
 	  text-align: right;
 	}
 
 	#wait2 {
+	  font-family: "DengXian", sans-serif;
 	  font-size: 1.5em;
-	  color: #000;
+	  color: #888;
 	  text-align: right;
 	}
 	
 	#dest {
 	  font-size: 1.8em;
+	  font-family: "DengXian", sans-serif;
 	  color: #000000;
       font-weight: bold;
 	  text-align: left;
-	  height: 40px;
+	  height: 35px;
 	}
 	
 	#dest1 {
 	  font-size: 1.2em;
+	  font-family: "DengXian", sans-serif;
 	  color: #888;
 	  text-align: left;
+	  margin-bottom: 15px;
 	}
 	
 	#zj {
@@ -77,6 +86,7 @@
 	}
 
     .footer {
+	  font-family: "DengXian", sans-serif;
       padding: 0px 0px;
 	  text-align: center;
       margin-top: 45px;
@@ -138,6 +148,12 @@
 	      const eta = etaString.slice(11, 16);
   	      document.getElementById("eta-time2").innerText = eta;
   	      document.getElementById("bus-icon2").style.display = "inline";
+		  if(data.data.length > 1){
+			const etaString1 = data.data[1].eta;
+			const eta1 = etaString1.slice(11, 16);
+			document.getElementById("wait2").innerText = eta1+" (未开出)";
+		  }
+		  
   	    } else {
 		  const ts = data.generated_timestamp;
 		  const time = parseInt(ts.slice(11, 13));
