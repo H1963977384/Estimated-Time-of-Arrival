@@ -54,6 +54,7 @@
 	  font-size: 1.5em;
 	  color: #888;
 	  text-align: right;
+	  height: 30px;
 	}
 
 	#wait2 {
@@ -61,6 +62,7 @@
 	  font-size: 1.5em;
 	  color: #888;
 	  text-align: right;
+	  height: 30px;
 	}
 	
 	#dest {
@@ -77,12 +79,13 @@
 	  font-family: "DengXian", sans-serif;
 	  color: #888;
 	  text-align: left;
-	  margin-bottom: 15px;
+	  height: 35px;
+	  margin-bottom: 5px;
 	}
 	
 	#zj {
 	  height: 20px;
-	  margin-top: 25px;
+	  margin-top: 20px;
 	}
 
     .footer {
@@ -101,11 +104,11 @@
 	<div id="a23">A23</div>
     <h2>下一班车预计抵达时间</h2>
 	
-    <div id="dest">往 機場</div><div id="dest1">石硤尾商場</div><div id="eta"><span id="eta-time1">正在加载...</span><img id="bus-icon1" src="logo.png" alt="bus icon" style="height: 0.6em; vertical-align: top; margin-right: 8px; display: none;"></div>
+    <div id="dest">往 機場</div><div id="dest1">石硤尾商場</div><div id="eta"><span id="eta-time1">正在加载...</span><img id="bus-icon1" src="./img/logo.png" alt="bus icon" style="height: 0.6em; vertical-align: top; margin-right: 8px; display: none;"></div>
 	<div id="wait1"></div>
     <div id="zj"><hr></div>
 	
-	<div id="dest">往 慈雲山(北)</div><div id="dest1">港珠澳大桥香港口岸</div><div id="eta"><span id="eta-time2">正在加载...</span><img id="bus-icon2" src="logo.png" alt="bus icon" style="height: 0.6em; vertical-align: top; margin-right: 8px; display: none;"></div>
+	<div id="dest">往 慈雲山(北)</div><div id="dest1">港珠澳大桥香港口岸</div><div id="eta"><span id="eta-time2">正在加载...</span><img id="bus-icon2" src="./img/logo.png" alt="bus icon" style="height: 0.6em; vertical-align: top; margin-right: 8px; display: none;"></div>
     <div id="wait2"></div>
 	<div class="footer">实际抵站时间会受交通情况影响，建议及早前往巴士站候车。</div>
   </div>
@@ -121,6 +124,11 @@
 		  const time = ts.slice(11, 13);
 	      document.getElementById("eta-time1").innerText = eta;
 	      document.getElementById("bus-icon1").style.display = "inline";
+		  if(data.data.length > 1){
+			const etaString1 = data.data[1].eta;
+			const eta1 = etaString1.slice(11, 16);
+			document.getElementById("wait1").innerText = eta1;
+		  }
 	    } else {
 		  const ts = data.generated_timestamp;
 		  const time = parseInt(ts.slice(11, 13));
