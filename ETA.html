@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>抵站時間查詢</title>
+  <title>抵站时间查询</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -17,7 +17,7 @@
 
     .card {
       background: white;
-      padding: 50px 80px;
+      padding: 20px 24px;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
@@ -28,7 +28,7 @@
     h2 {
       color: #333;
       font-size: 1.5em;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
 	#a23 {
@@ -74,7 +74,7 @@
 </head>
 <body>
   <div class="card">
-    <div id="a23">A23</div>
+	<div id="a23">A23</div>
     <h2>下一班车预计抵达时间</h2>
 	
     <div id="dest">往 機場</div><div id="dest1">石硤尾商場</div><div id="eta"><span id="eta-time1">正在加载...</span><img id="bus-icon2" src="logo.png" alt="bus icon" style="height: 0.6em; vertical-align: top; margin-right: 8px; display: none;"></div>
@@ -94,7 +94,7 @@
 	      document.getElementById("eta-time1").innerText = eta;
 	      document.getElementById("bus-icon1").style.display = "inline";
 	    } else {
-	      document.getElementById("eta-time1").innerText = "已過發車時間";
+	      document.getElementById("eta-time1").innerText = "已过发车时间";
 	    }
 	  })
 	  .catch(err => {
@@ -113,7 +113,7 @@
   	      document.getElementById("eta-time2").innerText = eta;
   	      document.getElementById("bus-icon2").style.display = "inline";
   	    } else {
-  	      document.getElementById("eta-time2").innerText = "已過發車時間";
+  	      document.getElementById("eta-time2").innerText = "已过发车时间";
   	    }
   	  })
   	  .catch(err => {
