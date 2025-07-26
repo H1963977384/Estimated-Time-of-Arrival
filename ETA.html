@@ -107,7 +107,7 @@
 	    if (data.data && data.data.length > 0 && data.data[0].eta) {
 	      const etaString = data.data[0].eta;
 		  const ts = data.generated_timestamp;
-	      const eta = etaString.slice(11, 19);
+	      const eta = etaString.slice(11, 16);
 		  const time = ts.slice(11, 13);
 	      document.getElementById("eta-time1").innerText = eta;
 	      document.getElementById("bus-icon1").style.display = "inline";
@@ -135,18 +135,17 @@
   	  .then(data => {
   	    if (data.data && data.data.length > 0 && data.data[0].eta) {
   	      const etaString = data.data[0].eta;
-	      const eta = etaString.slice(11, 19);
+	      const eta = etaString.slice(11, 16);
   	      document.getElementById("eta-time2").innerText = eta;
   	      document.getElementById("bus-icon2").style.display = "inline";
   	    } else {
 		  const ts = data.generated_timestamp;
 		  const time = parseInt(ts.slice(11, 13));
-		  if(time>=12) {
+		  document.getElementById("wait2").innerText = "预计11:10开出";
+		  if(time>=5) {
 			  document.getElementById("eta-time2").innerText = "末班车已过";
-		      document.getElementById("wait2").innerText = "预计明日11:10开出";
 		  } else {
 			  document.getElementById("eta-time2").innerText = "首班车未发";
-			  document.getElementById("wait2").innerText = "预计11:10开出";
 		  }
   	    }
   	  })
