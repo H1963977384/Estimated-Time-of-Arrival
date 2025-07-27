@@ -167,9 +167,9 @@
 		  const time = parseInt(ts.slice(11, 13));
 		  document.getElementById("wait2").innerText = "预计11:10开出";
 		  if(time>=5) {
-			  document.getElementById("eta-time2").innerText = "末班车已过";
-		  } else {
 			  document.getElementById("eta-time2").innerText = "首班车未发";
+		  } else {
+			  document.getElementById("eta-time2").innerText = "末班车已过";
 		  }
   	    }
   	  })
