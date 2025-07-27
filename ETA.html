@@ -127,7 +127,7 @@
 		  if(data.data.length > 1){
 			const etaString1 = data.data[1].eta;
 			const eta1 = etaString1.slice(11, 16);
-			document.getElementById("wait1").innerText = eta1;
+			document.getElementById("wait1").innerText = eta1+" (未开出)";
 		  }
 	    } else {
 		  const ts = data.generated_timestamp;
@@ -143,7 +143,7 @@
 	  })
 	  .catch(err => {
 	    console.error(err);
-  	    document.getElementById("eta-time2").innerText = "加载异常...";
+  	    document.getElementById("eta-time2").innerText = "网络异常";
 	  });
   </script>
   
@@ -175,7 +175,7 @@
   	  })
   	  .catch(err => {
   	    console.error(err);
-  	    document.getElementById("eta-time2").innerText = "加载异常...";
+  	    document.getElementById("eta-time2").innerText = "网络异常";
   	  });
   </script>
 </body>
